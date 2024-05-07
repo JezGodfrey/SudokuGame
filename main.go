@@ -32,8 +32,9 @@ func main() {
 		finalTime := time.Since(timer).Truncate(time.Second)
 		fmt.Println("\nComplete!")
 		if wrongCount > 0 {
-			finalTime = finalTime + (time.Duration(wrongCount * 20))
-			fmt.Printf("Wrong Guesses: %v x 20 seconds = %v seconds\n", wrongCount, wrongCount*20)
+			penalty := (wrongCount * 20) * int(time.Second)
+			finalTime = finalTime + (time.Duration(penalty).Truncate(time.Second))
+			fmt.Printf("Wrong Guesses: %v x 20 seconds = %v\n", wrongCount, time.Duration(penalty).Truncate(time.Second))
 		}
 		fmt.Println("Time Elapsed: " + time.Duration.String(finalTime))
 	}

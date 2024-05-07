@@ -47,7 +47,9 @@ func GameState(s []string, c []string, m []int, e *string, wrong *int, mode bool
 					fmt.Printf(" %v%v%v ", Green, s[i], Def)
 				} else {
 					fmt.Printf(" %v%v%v ", Red, s[i], Def)
-					*wrong++
+					if s[i] != " " {
+						*wrong++
+					}
 				}
 			}
 			colorCheck = false
